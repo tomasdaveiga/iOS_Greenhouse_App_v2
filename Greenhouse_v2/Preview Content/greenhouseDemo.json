@@ -1,0 +1,57 @@
+{
+  "channel": {
+    "id": 2128848,
+    "name": "Greenhouse",
+    "latitude": "0.0",
+    "longitude": "0.0",
+    "field1": "Temperature",
+    "field2": "Humidity",
+    "field3": "Light",
+    "field4": "Window",
+    "created_at": "2023-04-30T17:38:31Z",
+    "updated_at": "2023-04-30T17:38:31Z",
+    "last_entry_id": 5
+  },
+  "feeds": [
+    {
+      "created_at": "2023-05-02T08:57:26Z",
+      "entry_id": 1,
+      "field1": "25",
+      "field2": "50",
+      "field3": "70",
+      "field4": "44"
+    },
+    {
+      "created_at": "2023-05-02T08:58:01Z",
+      "entry_id": 2,
+      "field1": "25",
+      "field2": "46",
+      "field3": "73",
+      "field4": "50"
+    },
+    {
+      "created_at": "2023-05-02T08:58:47Z",
+      "entry_id": 3,
+      "field1": "35",
+      "field2": "36",
+      "field3": "83",
+      "field4": "60"
+    },
+    {
+      "created_at": "2023-05-02T09:02:03Z",
+      "entry_id": 4,
+      "field1": "28",
+      "field2": "43",
+      "field3": "76",
+      "field4": "53"
+    },
+    {
+      "created_at": "2023-05-02T09:04:14Z",
+      "entry_id": 5,
+      "field1": "32",
+      "field2": "39",
+      "field3": "80",
+      "field4": "57"
+    }
+  ]
+}

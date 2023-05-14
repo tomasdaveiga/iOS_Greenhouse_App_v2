@@ -1,0 +1,6 @@
+framework module Pods_Greenhouse_v2_Greenhouse_v2UITests {
+  umbrella header "Pods-Greenhouse_v2-Greenhouse_v2UITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
