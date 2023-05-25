@@ -49,9 +49,10 @@ struct DetailedDataView: View {
     func chartView(currentTab: String)->some View{
         // Get the data format
         let calendar = Calendar.current
-        
+        let currentDate = Date()
+                
         // Define the end of the X axis: always the last data point
-        let endX = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: VariableData.data[VariableData.numPoints-1].date)!
+        let endX = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: currentDate)!
         
         /* Define the start of the X axis: depends on the picker */
         var currentData: [DataPoint]
@@ -90,12 +91,6 @@ struct DetailedDataView: View {
         let min = currentData.min{ item1, item2 in
             return item1.value < item2.value
         }?.value ?? 0
-        
-        
-        var datesScaleLabel: [Date] = []
-        for i in stride (from: 0, through: 23, by: 4){
-            datesScaleLabel.append(calendar.date(bySettingHour: i, minute: 0, second: 0, of: currentData[0].date)!)
-        }
         
         return Chart{
             ForEach(currentData){ item in
