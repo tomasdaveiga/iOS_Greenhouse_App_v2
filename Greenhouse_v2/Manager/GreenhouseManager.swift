@@ -17,10 +17,10 @@ class GreenhouseDataManager {
     
     init(){
         greenhouseData = GreenhouseData(channel: GreenhouseData.ChannelResponse(id: 0, name: "", latitude: "", longitude: "", field1: "", field2: "", field3: "", field4: "", last_entry_id: 0), feeds: [])
-        tempData = WholeVariableData(name: "Temperature", symbol: "thermometer.no_weather", data: [], units: "\u{00B0}")
-        humidityData = WholeVariableData(name: "Humidity", symbol: "humidity", data: [], units: "\u{0025}")
-        lightData = WholeVariableData(name: "Sunlight", symbol: "light.max", data: [], units: "\u{0025}")
-        windowData = WholeVariableData(name: "Window Angle", symbol: "window.ceiling", data: [], units: "\u{0025}")
+        tempData = WholeVariableData(name: "Temperature", symbol: "thermometer.medium", data: [], units: "\u{00B0}", numPoints: 0)
+        humidityData = WholeVariableData(name: "Humidity", symbol: "humidity", data: [], units: "\u{0025}", numPoints: 0)
+        lightData = WholeVariableData(name: "Sunlight", symbol: "light.max", data: [], units: "\u{0025}", numPoints: 0)
+        windowData = WholeVariableData(name: "Window Angle", symbol: "window.ceiling", data: [], units: "\u{0025}", numPoints: 0)
     }
     
     func fetchData() async throws {
@@ -47,6 +47,10 @@ class GreenhouseDataManager {
             windowData.data.append(DataPoint(date: fullDate, value:greenhouseData.feeds[i].windowAngle))
             
         }
+        tempData.numPoints = greenhouseData.channel.numEntries
+        humidityData.numPoints = greenhouseData.channel.numEntries
+        lightData.numPoints = greenhouseData.channel.numEntries
+        windowData.numPoints = greenhouseData.channel.numEntries
     }
     
     func getTempData() -> WholeVariableData{
@@ -112,6 +116,7 @@ struct WholeVariableData {
     var symbol: String
     var data: [DataPoint]
     var units: String
+    var numPoints: Int
 }
 
 struct DataPoint: Identifiable{

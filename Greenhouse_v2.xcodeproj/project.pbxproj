@@ -17,20 +17,19 @@
 		AE621F8C29EC2E3600AFBF7D /* Greenhouse_v2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE621F8B29EC2E3600AFBF7D /* Greenhouse_v2Tests.swift */; };
 		AE621F9629EC2E3700AFBF7D /* Greenhouse_v2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE621F9529EC2E3700AFBF7D /* Greenhouse_v2UITests.swift */; };
 		AE621F9829EC2E3700AFBF7D /* Greenhouse_v2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE621F9729EC2E3700AFBF7D /* Greenhouse_v2UITestsLaunchTests.swift */; };
-		AE621FA629EC316800AFBF7D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE621FA529EC316800AFBF7D /* LocationManager.swift */; };
-		AE621FA929EC339600AFBF7D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE621FA829EC339600AFBF7D /* WelcomeView.swift */; };
 		AE621FAB29EC3A0900AFBF7D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE621FAA29EC3A0900AFBF7D /* LoadingView.swift */; };
 		AE77037F2A05531C00690C04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE77037E2A05531C00690C04 /* ViewController.swift */; };
 		AE7703812A05588E00690C04 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7703802A05588E00690C04 /* FilterViewController.swift */; };
 		AEC02FBF29FFF6E5006948E9 /* GreenhouseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC02FBE29FFF6E5006948E9 /* GreenhouseManager.swift */; };
 		AEC02FC12A0114D6006948E9 /* GreenhouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC02FC02A0114D6006948E9 /* GreenhouseView.swift */; };
 		AEC02FC32A0115B9006948E9 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC02FC22A0115B9006948E9 /* ModelData.swift */; };
-		AEC02FC52A0115DB006948E9 /* greenhouseDemo.json in Resources */ = {isa = PBXBuildFile; fileRef = AEC02FC42A0115DB006948E9 /* greenhouseDemo.json */; };
+		AEC02FC52A0115DB006948E9 /* greenhouseDemo_v2.json in Resources */ = {isa = PBXBuildFile; fileRef = AEC02FC42A0115DB006948E9 /* greenhouseDemo_v2.json */; };
 		AEC02FC72A0116C3006948E9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC02FC62A0116C3006948E9 /* Extensions.swift */; };
 		AEC02FCA2A012C7C006948E9 /* WeatherRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC02FC92A012C7C006948E9 /* WeatherRow.swift */; };
 		AEC02FCC2A013D8A006948E9 /* VariableSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC02FCB2A013D8A006948E9 /* VariableSquare.swift */; };
 		AEC02FCE2A014B01006948E9 /* VariableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC02FCD2A014B01006948E9 /* VariableRow.swift */; };
 		AEC02FD02A015EB7006948E9 /* DetailedDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC02FCF2A015EB6006948E9 /* DetailedDataView.swift */; };
+		AEE6B9EF2A1FF3090078B1C1 /* greenhouseDemo.json in Resources */ = {isa = PBXBuildFile; fileRef = AEE6B9EE2A1FF3090078B1C1 /* greenhouseDemo.json */; };
 		C9876D116E69094A111BE99F /* Pods_Greenhouse_v2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD301C54A8A2204310D8024 /* Pods_Greenhouse_v2Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,20 +68,19 @@
 		AE621F9129EC2E3600AFBF7D /* Greenhouse_v2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Greenhouse_v2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE621F9529EC2E3700AFBF7D /* Greenhouse_v2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Greenhouse_v2UITests.swift; sourceTree = "<group>"; };
 		AE621F9729EC2E3700AFBF7D /* Greenhouse_v2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Greenhouse_v2UITestsLaunchTests.swift; sourceTree = "<group>"; };
-		AE621FA529EC316800AFBF7D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		AE621FA829EC339600AFBF7D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		AE621FAA29EC3A0900AFBF7D /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		AE77037E2A05531C00690C04 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AE7703802A05588E00690C04 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		AEC02FBE29FFF6E5006948E9 /* GreenhouseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenhouseManager.swift; sourceTree = "<group>"; };
 		AEC02FC02A0114D6006948E9 /* GreenhouseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenhouseView.swift; sourceTree = "<group>"; };
 		AEC02FC22A0115B9006948E9 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
-		AEC02FC42A0115DB006948E9 /* greenhouseDemo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = greenhouseDemo.json; sourceTree = "<group>"; };
+		AEC02FC42A0115DB006948E9 /* greenhouseDemo_v2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = greenhouseDemo_v2.json; sourceTree = "<group>"; };
 		AEC02FC62A0116C3006948E9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AEC02FC92A012C7C006948E9 /* WeatherRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRow.swift; sourceTree = "<group>"; };
 		AEC02FCB2A013D8A006948E9 /* VariableSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableSquare.swift; sourceTree = "<group>"; };
 		AEC02FCD2A014B01006948E9 /* VariableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableRow.swift; sourceTree = "<group>"; };
 		AEC02FCF2A015EB6006948E9 /* DetailedDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDataView.swift; sourceTree = "<group>"; };
+		AEE6B9EE2A1FF3090078B1C1 /* greenhouseDemo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = greenhouseDemo.json; sourceTree = "<group>"; };
 		C2BC4D4F58489B20F99146D2 /* Pods_Greenhouse_v2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Greenhouse_v2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD301C54A8A2204310D8024 /* Pods_Greenhouse_v2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Greenhouse_v2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9C840329FCF712C85AC64C9 /* Pods-Greenhouse_v2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Greenhouse_v2Tests.debug.xcconfig"; path = "Target Support Files/Pods-Greenhouse_v2Tests/Pods-Greenhouse_v2Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -183,7 +181,8 @@
 			children = (
 				AE621F8129EC2E3600AFBF7D /* Preview Assets.xcassets */,
 				AEC02FC22A0115B9006948E9 /* ModelData.swift */,
-				AEC02FC42A0115DB006948E9 /* greenhouseDemo.json */,
+				AEC02FC42A0115DB006948E9 /* greenhouseDemo_v2.json */,
+				AEE6B9EE2A1FF3090078B1C1 /* greenhouseDemo.json */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -208,7 +207,6 @@
 		AE621FA429EC315100AFBF7D /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				AE621FA529EC316800AFBF7D /* LocationManager.swift */,
 				AEC02FBE29FFF6E5006948E9 /* GreenhouseManager.swift */,
 			);
 			path = Manager;
@@ -217,7 +215,6 @@
 		AE621FA729EC332900AFBF7D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AE621FA829EC339600AFBF7D /* WelcomeView.swift */,
 				AE621F7C29EC2E3000AFBF7D /* ContentView.swift */,
 				AE621FAA29EC3A0900AFBF7D /* LoadingView.swift */,
 				AEC02FC02A0114D6006948E9 /* GreenhouseView.swift */,
@@ -346,7 +343,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE621F8229EC2E3600AFBF7D /* Preview Assets.xcassets in Resources */,
-				AEC02FC52A0115DB006948E9 /* greenhouseDemo.json in Resources */,
+				AEE6B9EF2A1FF3090078B1C1 /* greenhouseDemo.json in Resources */,
+				AEC02FC52A0115DB006948E9 /* greenhouseDemo_v2.json in Resources */,
 				AE621F7F29EC2E3600AFBF7D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,7 +477,6 @@
 				AEC02FBF29FFF6E5006948E9 /* GreenhouseManager.swift in Sources */,
 				AE1F04472A05428100BF4D1D /* UIPresentationController.swift in Sources */,
 				AEC02FC72A0116C3006948E9 /* Extensions.swift in Sources */,
-				AE621FA929EC339600AFBF7D /* WelcomeView.swift in Sources */,
 				AEC02FCC2A013D8A006948E9 /* VariableSquare.swift in Sources */,
 				AEC02FD02A015EB7006948E9 /* DetailedDataView.swift in Sources */,
 				AE621F7D29EC2E3000AFBF7D /* ContentView.swift in Sources */,
@@ -488,7 +485,6 @@
 				AE7703812A05588E00690C04 /* FilterViewController.swift in Sources */,
 				AE621FAB29EC3A0900AFBF7D /* LoadingView.swift in Sources */,
 				AEC02FC32A0115B9006948E9 /* ModelData.swift in Sources */,
-				AE621FA629EC316800AFBF7D /* LocationManager.swift in Sources */,
 				AEC02FCE2A014B01006948E9 /* VariableRow.swift in Sources */,
 				AEC02FC12A0114D6006948E9 /* GreenhouseView.swift in Sources */,
 			);
@@ -658,8 +654,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -692,8 +688,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

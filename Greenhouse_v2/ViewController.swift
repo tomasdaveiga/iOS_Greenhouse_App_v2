@@ -13,6 +13,10 @@ class MyViewController: UIViewController {
     
     let greenhouseManager = GreenhouseDataManager()
     var greenhouse: GreenhouseData?
+    var tempData: WholeVariableData?
+    var humidityData: WholeVariableData?
+    var lightData: WholeVariableData?
+    var windowData: WholeVariableData?
     
     func viewDidLoad() async {
         super.viewDidLoad()
@@ -30,7 +34,7 @@ class MyViewController: UIViewController {
                                     ])
         
         if let greenhouse = greenhouse {
-            let greenhouseView = GreenhouseUIView(greenhouse: greenhouse)
+            let greenhouseView = GreenhouseUIView(greenhouse: greenhouse, tempData: tempData!, humidityData: humidityData!, lightData: lightData!, windowData: windowData!)
             stackView.addArrangedSubview(greenhouseView)
         } else {
             let loadingView = LoadingUIView()
@@ -39,7 +43,7 @@ class MyViewController: UIViewController {
                 try await greenhouseManager.fetchData()
                 let greenhouse = greenhouseManager.getGreenhouseData()
                 self.greenhouse = greenhouse
-                let greenhouseView = GreenhouseUIView(greenhouse: greenhouse)
+                let greenhouseView = GreenhouseUIView(greenhouse: greenhouse, tempData: tempData!, humidityData: humidityData!, lightData: lightData!, windowData: windowData!)
                 DispatchQueue.main.async {
                     loadingView.removeFromSuperview()
                     stackView.addArrangedSubview(greenhouseView)

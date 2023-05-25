@@ -9,22 +9,21 @@ import SwiftUI
 import Charts
 
 struct DetailedDataView: View {
-    private var data: WholeVariableData
+    private var VariableData: WholeVariableData
     
     init(inputData: WholeVariableData){
-        data = inputData
+        VariableData = inputData
     }
     
-    @State var currentTab: String = "Max"
-    @State var currentActiveItem: DataPoint?
-    @State var plotWidth: CGFloat = 0
+    @State var currentTab: String = "1D"
     var body: some View {
-        LazyVStack{
+        VStack{
+            Spacer()
             HStack{
-                Image(systemName: data.symbol)
+                Image(systemName: VariableData.symbol)
                     .font(.system(size: 70))
                     .frame(width: 100, height: 100, alignment: .leading)
-                Text(data.name)
+                Text(VariableData.name)
                     .font(.system(size: 30))
             }
             
@@ -33,95 +32,88 @@ struct DetailedDataView: View {
                 Text("1W").tag("1W")
                 Text("1M").tag("1M")
                 Text("Max").tag("Max")
-            }
-            .pickerStyle(.segmented)
-            .padding()
-            chartView()
+                }
+                .pickerStyle(.segmented)
+                .padding()
+            chartView(currentTab: currentTab)
             Spacer()
             
         }
         .font(.caption)
-        .foregroundColor(.black)
-        .background(.white)
+        .foregroundColor(.white)
+        .background(Color(hue: 0.6, saturation: 0.887, brightness: 0.557))
+        .preferredColorScheme(.dark)
     }
     
-    /*
-    func checkActiveItem(item: DataPoint){
-        if let currentActiveItem,currentActiveItem.id == item.id{
-            RuleMark(x: .value("Hour", currentActiveItem.value))
-                .lineStyle(.init(lineWidth: 2, miterLimit: 2, dash: [2], dashPhase: 5))
-                .offset(x: (plotWidth / CGFloat(data.data.count)) / 2)
-                .annotation(position: .top){
-                    VStack(alignment: .leading, spacing: 6){
-                        Text(data.name)
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                        
-                        Text(String(currentActiveItem.value))
-                            .font(.title3.bold())
-                    }
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 4)
-                    .background{
-                        RoundedRectangle(cornerRadius: 6, style: .continuous)
-                            .fill(.white.shadow(.drop(radius: 2)))
-                    }
-                }
+    
+    func chartView(currentTab: String)->some View{
+        // Get the data format
+        let calendar = Calendar.current
+        
+        // Define the end of the X axis: always the last data point
+        let endX = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: VariableData.data[VariableData.numPoints-1].date)!
+        
+        /* Define the start of the X axis: depends on the picker */
+        var currentData: [DataPoint]
+        
+        // Default Single Day
+        var startX = calendar.date(bySettingHour: 00, minute: 00, second: 00, of: endX)!
+        // Other Cases
+        if(currentTab == "1W"){
+            if(calendar.date(byAdding: .day, value: -6, to: endX)! > calendar.date(bySettingHour: 00, minute: 00, second: 00, of: VariableData.data[0].date)!){
+                startX = calendar.date(byAdding: .day, value: -6, to: endX)!
+                startX = calendar.date(bySettingHour: 00, minute: 00, second: 00, of: startX)!
+            }else{
+                startX = calendar.date(bySettingHour: 00, minute: 00, second: 00, of: VariableData.data[0].date)!
+            }
+        }else if(currentTab == "1M"){
+            if(calendar.date(byAdding: .month, value: -1, to: endX)! > calendar.date(bySettingHour: 00, minute: 00, second: 00, of: VariableData.data[0].date)!){
+                startX = calendar.date(byAdding: .month, value: -1, to: endX)!
+                startX = calendar.date(bySettingHour: 00, minute: 00, second: 00, of: startX)!
+            }else{
+                startX = calendar.date(bySettingHour: 00, minute: 00, second: 00, of: VariableData.data[0].date)!
+            }
+        }else if(currentTab == "Max"){
+            startX = calendar.date(bySettingHour: 00, minute: 00, second: 00, of: VariableData.data[0].date)!
         }
-    }
-    */
-    
-    @ViewBuilder
-    func chartView()->some View{
-        let max = data.data.max{ item1, item2 in
+        
+        currentData = VariableData.data.filter{ item in
+            return item.date >= startX
+        }
+        
+        
+        // Define the Y axis limits
+        let max = currentData.max{ item1, item2 in
             return item2.value > item1.value
         }?.value ?? 0
         
-        let min = data.data.min{ item1, item2 in
+        let min = currentData.min{ item1, item2 in
             return item1.value < item2.value
         }?.value ?? 0
         
-        Chart{
-            ForEach(data.data){ item in
+        
+        var datesScaleLabel: [Date] = []
+        for i in stride (from: 0, through: 23, by: 4){
+            datesScaleLabel.append(calendar.date(bySettingHour: i, minute: 0, second: 0, of: currentData[0].date)!)
+        }
+        
+        return Chart{
+            ForEach(currentData){ item in
                 LineMark(
-                    x: .value("Hour", item.date.formatted(date: .omitted, time: .shortened)),
+                    x: .value("Hour", item.date),
                     y: .value("Temperature", item.value)
                 )
-                //checkActiveItem(item: item)
             }
         }
+        .chartXScale(domain: startX...endX)
         .chartYScale(domain: (min - 2)...(max + 2))
-        /*
-        .chartOverlay(content: {proxy in
-            GeometryReader{innerProxy in
-                Rectangle()
-                    .fill(.clear).contentShape(Rectangle())
-                    .gesture(
-                        DragGesture()
-                            .onChanged{value in
-                                let location = value.location
-                                if let date: Date = proxy.value(atX: location.x){
-                                    let calendar = Calendar.current
-                                    let hour = calendar.component(.hour, from: date)
-                                    if let currentItem = data.data.first(where: {item in calendar.component(.hour, from: item.date) == hour}){
-                                       self.currentActiveItem = currentItem
-                                        self.plotWidth = proxy.plotAreaSize.width
-                                    }
-                                }
-                            }.onEnded{value in
-                                self.currentActiveItem = nil
-                            }
-                    )
-            }
-         
-        })
-         */
+        .frame(width: 350)
         .frame(height: 300)
     }
 }
 
 struct InDepthData_Previews: PreviewProvider {
     static var previews: some View {
-        DetailedDataView(inputData: previewTemperatureData)
+        DetailedDataView(inputData: previewTempData)
     }
 }

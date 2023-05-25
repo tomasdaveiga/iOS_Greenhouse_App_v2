@@ -50,15 +50,12 @@ class FilterViewController: UIViewController {
         
     }
     
-    // 1.
     override func viewDidLayoutSubviews() {
         if !hasSetPointOrigin {
             hasSetPointOrigin = true
             pointOrigin = self.view.frame.origin
         }
     }
-    
-    // 3.
     @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: view)
 
