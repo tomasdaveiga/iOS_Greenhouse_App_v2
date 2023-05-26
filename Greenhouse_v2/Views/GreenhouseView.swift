@@ -94,28 +94,3 @@ struct GreenhouseView_Previews: PreviewProvider {
         GreenhouseView(greenhouse: previewGreenhouseData, tempData: previewTempData, humidityData: previewHumidityData, lightData: previewLightData, windowData: previewWindowData)
     }
 }
-
-class GreenhouseUIView: UIView {
-    private let hostingController: UIHostingController<GreenhouseView>
-    
-    init(greenhouse: GreenhouseData, tempData: WholeVariableData, humidityData: WholeVariableData, lightData: WholeVariableData, windowData: WholeVariableData) {
-        hostingController = UIHostingController(rootView: GreenhouseView(greenhouse: greenhouse, tempData: tempData, humidityData: humidityData, lightData: lightData, windowData: windowData))
-        super.init(frame: .zero)
-        setupView()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupView() {
-        addSubview(hostingController.view)
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            hostingController.view.topAnchor.constraint(equalTo: topAnchor),
-            hostingController.view.leadingAnchor.constraint(equalTo: leadingAnchor),
-            hostingController.view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            hostingController.view.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-    }
-}

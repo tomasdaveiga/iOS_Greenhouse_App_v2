@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1C588C059BB15B039677EABF /* Pods_Greenhouse_v2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2BC4D4F58489B20F99146D2 /* Pods_Greenhouse_v2.framework */; };
 		ABA1FE17915EF0D1E8289D80 /* Pods_Greenhouse_v2_Greenhouse_v2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 152EA7323AE93EE7714FEE51 /* Pods_Greenhouse_v2_Greenhouse_v2UITests.framework */; };
-		AE1F04472A05428100BF4D1D /* UIPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F04462A05428100BF4D1D /* UIPresentationController.swift */; };
 		AE621F7B29EC2E3000AFBF7D /* Greenhouse_v2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE621F7A29EC2E3000AFBF7D /* Greenhouse_v2App.swift */; };
 		AE621F7D29EC2E3000AFBF7D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE621F7C29EC2E3000AFBF7D /* ContentView.swift */; };
 		AE621F7F29EC2E3600AFBF7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE621F7E29EC2E3600AFBF7D /* Assets.xcassets */; };
@@ -18,8 +17,6 @@
 		AE621F9629EC2E3700AFBF7D /* Greenhouse_v2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE621F9529EC2E3700AFBF7D /* Greenhouse_v2UITests.swift */; };
 		AE621F9829EC2E3700AFBF7D /* Greenhouse_v2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE621F9729EC2E3700AFBF7D /* Greenhouse_v2UITestsLaunchTests.swift */; };
 		AE621FAB29EC3A0900AFBF7D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE621FAA29EC3A0900AFBF7D /* LoadingView.swift */; };
-		AE77037F2A05531C00690C04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE77037E2A05531C00690C04 /* ViewController.swift */; };
-		AE7703812A05588E00690C04 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7703802A05588E00690C04 /* FilterViewController.swift */; };
 		AEC02FBF29FFF6E5006948E9 /* GreenhouseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC02FBE29FFF6E5006948E9 /* GreenhouseManager.swift */; };
 		AEC02FC12A0114D6006948E9 /* GreenhouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC02FC02A0114D6006948E9 /* GreenhouseView.swift */; };
 		AEC02FC32A0115B9006948E9 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC02FC22A0115B9006948E9 /* ModelData.swift */; };
@@ -57,7 +54,6 @@
 		7277763BA57D131A769A17AD /* Pods-Greenhouse_v2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Greenhouse_v2.release.xcconfig"; path = "Target Support Files/Pods-Greenhouse_v2/Pods-Greenhouse_v2.release.xcconfig"; sourceTree = "<group>"; };
 		7BA3F38D4EBDF0E29007F82B /* Pods-Greenhouse_v2-Greenhouse_v2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Greenhouse_v2-Greenhouse_v2UITests.debug.xcconfig"; path = "Target Support Files/Pods-Greenhouse_v2-Greenhouse_v2UITests/Pods-Greenhouse_v2-Greenhouse_v2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A3A4F3E7BEE851456F7FF41C /* Pods-Greenhouse_v2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Greenhouse_v2Tests.release.xcconfig"; path = "Target Support Files/Pods-Greenhouse_v2Tests/Pods-Greenhouse_v2Tests.release.xcconfig"; sourceTree = "<group>"; };
-		AE1F04462A05428100BF4D1D /* UIPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPresentationController.swift; sourceTree = "<group>"; };
 		AE621F7729EC2E3000AFBF7D /* Greenhouse_v2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Greenhouse_v2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE621F7A29EC2E3000AFBF7D /* Greenhouse_v2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Greenhouse_v2App.swift; sourceTree = "<group>"; };
 		AE621F7C29EC2E3000AFBF7D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,8 +65,6 @@
 		AE621F9529EC2E3700AFBF7D /* Greenhouse_v2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Greenhouse_v2UITests.swift; sourceTree = "<group>"; };
 		AE621F9729EC2E3700AFBF7D /* Greenhouse_v2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Greenhouse_v2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AE621FAA29EC3A0900AFBF7D /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		AE77037E2A05531C00690C04 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AE7703802A05588E00690C04 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		AEC02FBE29FFF6E5006948E9 /* GreenhouseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenhouseManager.swift; sourceTree = "<group>"; };
 		AEC02FC02A0114D6006948E9 /* GreenhouseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenhouseView.swift; sourceTree = "<group>"; };
 		AEC02FC22A0115B9006948E9 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
@@ -169,9 +163,6 @@
 				AE621F7E29EC2E3600AFBF7D /* Assets.xcassets */,
 				AE621F8029EC2E3600AFBF7D /* Preview Content */,
 				AEC02FC62A0116C3006948E9 /* Extensions.swift */,
-				AE1F04462A05428100BF4D1D /* UIPresentationController.swift */,
-				AE7703802A05588E00690C04 /* FilterViewController.swift */,
-				AE77037E2A05531C00690C04 /* ViewController.swift */,
 			);
 			path = Greenhouse_v2;
 			sourceTree = "<group>";
@@ -473,16 +464,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE77037F2A05531C00690C04 /* ViewController.swift in Sources */,
 				AEC02FBF29FFF6E5006948E9 /* GreenhouseManager.swift in Sources */,
-				AE1F04472A05428100BF4D1D /* UIPresentationController.swift in Sources */,
 				AEC02FC72A0116C3006948E9 /* Extensions.swift in Sources */,
 				AEC02FCC2A013D8A006948E9 /* VariableSquare.swift in Sources */,
 				AEC02FD02A015EB7006948E9 /* DetailedDataView.swift in Sources */,
 				AE621F7D29EC2E3000AFBF7D /* ContentView.swift in Sources */,
 				AE621F7B29EC2E3000AFBF7D /* Greenhouse_v2App.swift in Sources */,
 				AEC02FCA2A012C7C006948E9 /* WeatherRow.swift in Sources */,
-				AE7703812A05588E00690C04 /* FilterViewController.swift in Sources */,
 				AE621FAB29EC3A0900AFBF7D /* LoadingView.swift in Sources */,
 				AEC02FC32A0115B9006948E9 /* ModelData.swift in Sources */,
 				AEC02FCE2A014B01006948E9 /* VariableRow.swift in Sources */,

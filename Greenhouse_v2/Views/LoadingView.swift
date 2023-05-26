@@ -21,29 +21,3 @@ struct LoadingView_Previews: PreviewProvider {
         LoadingView()
     }
 }
-
-
-class LoadingUIView: UIView {
-    private var hostingController = UIHostingController(rootView: LoadingView())
-    
-    init() {
-        hostingController = UIHostingController(rootView: LoadingView())
-        super.init(frame: .zero)
-        setupView()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupView() {
-        addSubview(hostingController.view)
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            hostingController.view.topAnchor.constraint(equalTo: topAnchor),
-            hostingController.view.leadingAnchor.constraint(equalTo: leadingAnchor),
-            hostingController.view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            hostingController.view.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-    }
-}
