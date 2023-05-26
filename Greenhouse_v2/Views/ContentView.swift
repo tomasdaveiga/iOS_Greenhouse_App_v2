@@ -41,7 +41,6 @@ struct ContentView: View {
         }
         .background(Color(hue: 0.6, saturation: 0.887, brightness: 0.557))
         .preferredColorScheme(.dark)
-        
     }
 }
 

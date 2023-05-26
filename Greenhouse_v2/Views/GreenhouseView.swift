@@ -19,71 +19,69 @@ struct GreenhouseView: View {
     
     var body: some View {
         NavigationView {
-            //ZStack(alignment: .leading){
+            VStack{
+                ZStack(alignment: .top){
+                    Image("greenhouse_vector")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 200)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .offset(y: -20)
+                        
+                    Text("Greenhouse")
+                        .bold().font(.system(size: 50))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding()
+                        .offset(y: -40)
+                }
+                
                 VStack{
-                    ZStack(alignment: .top){
-                        Image("greenhouse_vector")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 200)
+                    if(calendar.isDateInToday(tempData.data[tempData.numPoints-1].date)){
+                        Text("Last Reading today at " + tempData.data[tempData.numPoints-1].date.formatted(date: .omitted, time: .shortened))
                             .frame(maxWidth: .infinity, alignment: .trailing)
-                            .offset(y: -20)
-                            
-                        Text("Greenhouse")
-                            .bold().font(.system(size: 50))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding()
-                            .offset(y: -40)
+                            .offset(x: -20)
+                            .offset(y: 10)
+                    }else if(calendar.isDateInYesterday(tempData.data[tempData.numPoints-1].date)){
+                        Text("Last Reading yesterday at " + tempData.data[tempData.numPoints-1].date.formatted(date: .omitted, time: .shortened))
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .offset(x: -20)
+                            .offset(y: 10)
+                    }else{
+                        Text("Last reading " + tempData.data[tempData.numPoints-1].date.formatted(date: .abbreviated, time: .shortened))
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .offset(x: -20)
+                            .offset(y: 10)
                     }
-                    
-                    VStack{
-                        if(calendar.isDateInToday(tempData.data[tempData.numPoints-1].date)){
-                            Text("Last Reading today at " + tempData.data[tempData.numPoints-1].date.formatted(date: .omitted, time: .shortened))
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                                .offset(x: -20)
-                                .offset(y: 10)
-                        }else if(calendar.isDateInYesterday(tempData.data[tempData.numPoints-1].date)){
-                            Text("Last Reading yesterday at " + tempData.data[tempData.numPoints-1].date.formatted(date: .omitted, time: .shortened))
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                                .offset(x: -20)
-                                .offset(y: 10)
-                        }else{
-                            Text("Last reading " + tempData.data[tempData.numPoints-1].date.formatted(date: .abbreviated, time: .shortened))
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                                .offset(x: -20)
-                                .offset(y: 10)
+                    if (greenhouse.feeds[greenhouse.channel.numEntries-1].temperature > 19){
+                        NavigationLink(destination: DetailedDataView(inputData: tempData)){
+                            VariableRow(logo: "thermometer.sun", name: "Temperature", value: (greenhouse.feeds[greenhouse.channel.numEntries-1].temperature.roundDouble()+"°"))
                         }
-                        if (greenhouse.feeds[greenhouse.channel.numEntries-1].temperature > 19){
+                    }
+                    else{ if(greenhouse.feeds[greenhouse.channel.numEntries-1].temperature < 10){
+                        NavigationLink(destination: DetailedDataView(inputData: tempData)){
+                            VariableRow(logo: "thermometer.snowflake", name: "Temperature", value: (greenhouse.feeds[greenhouse.channel.numEntries-1].temperature.roundDouble()+"°"))
+                            }
+                        }
+                        else{
                             NavigationLink(destination: DetailedDataView(inputData: tempData)){
-                                VariableRow(logo: "thermometer.sun", name: "Temperature", value: (greenhouse.feeds[greenhouse.channel.numEntries-1].temperature.roundDouble()+"°"))
+                                VariableRow(logo: "thermometer.medium", name: "Temperature", value: (greenhouse.feeds[greenhouse.channel.numEntries-1].temperature.roundDouble()+"°"))
                             }
                         }
-                        else{ if(greenhouse.feeds[greenhouse.channel.numEntries-1].temperature < 10){
-                            NavigationLink(destination: DetailedDataView(inputData: tempData)){
-                                VariableRow(logo: "thermometer.snowflake", name: "Temperature", value: (greenhouse.feeds[greenhouse.channel.numEntries-1].temperature.roundDouble()+"°"))
-                                }
-                            }
-                            else{
-                                NavigationLink(destination: DetailedDataView(inputData: tempData)){
-                                    VariableRow(logo: "thermometer.medium", name: "Temperature", value: (greenhouse.feeds[greenhouse.channel.numEntries-1].temperature.roundDouble()+"°"))
-                                }
-                            }
-                        }
-                        //Spacer()
-                        NavigationLink(destination: DetailedDataView(inputData: humidityData)){
-                            VariableRow(logo: "humidity", name: "Humidity", value: (greenhouse.feeds[greenhouse.channel.numEntries-1].humidity.roundDouble()))
-                        }
-                        NavigationLink(destination: DetailedDataView(inputData: lightData)){
-                            VariableRow(logo: "light.max", name: "Light", value: (greenhouse.feeds[greenhouse.channel.numEntries-1].light.roundDouble()))
-                        }
-                        NavigationLink(destination: DetailedDataView(inputData: windowData)){
-                            VariableRow(logo: "window.ceiling", name: "Window", value: (greenhouse.feeds[greenhouse.channel.numEntries-1].windowAngle.roundDouble()))
-                        }
+                    }
+                    //Spacer()
+                    NavigationLink(destination: DetailedDataView(inputData: humidityData)){
+                        VariableRow(logo: "humidity", name: "Humidity", value: (greenhouse.feeds[greenhouse.channel.numEntries-1].humidity.roundDouble()))
+                    }
+                    NavigationLink(destination: DetailedDataView(inputData: lightData)){
+                        VariableRow(logo: "light.max", name: "Light", value: (greenhouse.feeds[greenhouse.channel.numEntries-1].light.roundDouble()))
+                    }
+                    NavigationLink(destination: DetailedDataView(inputData: windowData)){
+                        VariableRow(logo: "window.ceiling", name: "Window", value: (greenhouse.feeds[greenhouse.channel.numEntries-1].windowAngle.roundDouble()))
                     }
                 }
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
-            //}
+            }
+            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             .edgesIgnoringSafeArea(.bottom)
             .background(Color(hue: 0.6, saturation: 0.887, brightness: 0.557))
             .preferredColorScheme(.dark)
