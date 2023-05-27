@@ -15,38 +15,45 @@ struct DetailedDataView: View {
     @State private var isTouching: Bool = false
     @State var currentTab: String = "1D"
     
+    @State var chartYPosition = -100.0
+    
     init(inputData: WholeVariableData){
         VariableData = inputData
     }
     
     var body: some View {
-        VStack{
-            Spacer()
-            HStack{
-                Image(systemName: VariableData.symbol)
-                    .font(.system(size: 70))
-                    .frame(width: 100, height: 100, alignment: .leading)
-                Text(VariableData.name)
-                    .font(.system(size: 30))
-            }
-            
-            Picker("", selection: $currentTab){
-                Text("1D").tag("1D")
-                Text("1W").tag("1W")
-                Text("1M").tag("1M")
-                Text("Max").tag("Max")
+        GeometryReader{ geometry in
+            VStack{
+                HStack{
+                    Image(systemName: VariableData.symbol)
+                        .font(.system(size: 70))
+                        .frame(width: 100, height: 100, alignment: .leading)
+                    Text(VariableData.name)
+                        .font(.system(size: 30))
                 }
-                .pickerStyle(.segmented)
-                .padding()
-            Spacer()
-            chartView(currentTab: currentTab)
-            Spacer()
-            
+                .position(x: geometry.size.width/2, y: 100)
+                
+                if(!isTouching){
+                    Picker("", selection: $currentTab){
+                        Text("1D").tag("1D")
+                        Text("1W").tag("1W")
+                        Text("1M").tag("1M")
+                        Text("Max").tag("Max")
+                    }
+                    .pickerStyle(.segmented)
+                    .padding()
+                    .position(x: geometry.size.width/2, y: -50)
+                }
+                chartView(currentTab: currentTab)
+                    .position(x: 190, y: CGFloat(chartYPosition))
+                //            Spacer()
+            }
+            .font(.caption)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .foregroundColor(.white)
+            .background(Color(hue: 0.6, saturation: 0.887, brightness: 0.557))
+            .preferredColorScheme(.dark)
         }
-        .font(.caption)
-        .foregroundColor(.white)
-        .background(Color(hue: 0.6, saturation: 0.887, brightness: 0.557))
-        .preferredColorScheme(.dark)
     }
     
     
@@ -114,10 +121,35 @@ struct DetailedDataView: View {
                     if let closestDataPoint = getClosestDataPoint(touchLocation, proxy, in: geometry, currentData) {
                         let yValue = closestDataPoint.value
                         let formattedYValue = String(format: "%.0f", yValue)
+                        
+                        let yDate = closestDataPoint.date
+                        
+                        // Show Date of highlighted value
+                        if(currentTab == "1D"){
+                            Text(yDate.formatted(date: .omitted, time: .shortened))
+                                .font(.caption)
+                                .foregroundColor(.white)
+                                .position(x: geometry.size.width/2, y: -90)
+                        }else if (currentTab == "1W"){
+                            Text(yDate.formatted(date: .abbreviated, time: .shortened))
+                                .font(.caption)
+                                .foregroundColor(.white)
+                                .position(x: geometry.size.width/2, y: -90)
+                        }else if(currentTab == "1M" || currentTab == "Max"){
+                            Text(yDate.formatted(date: .abbreviated, time: .omitted))
+                                .font(.caption)
+                                .foregroundColor(.white)
+                                .position(x: geometry.size.width/2, y: -90)
+                        }
+                        
+                        
+                        // Show Value
                         Text(formattedYValue)
                             .font(.title)
                             .foregroundColor(.white)
-                            .position(x: touchLocation.x, y: -30)
+                            .position(x: touchLocation.x, y: -50)
+                        
+                        // Show Dashed Line
                         let plotViewHeight = geometry.size.height - 20 // Adjust the height as needed
                         Path { path in
                             path.move(to: CGPoint(x: touchLocation.x, y: 0))
@@ -125,7 +157,8 @@ struct DetailedDataView: View {
                         }
                         .stroke(style: StrokeStyle(lineWidth: 1, dash: [5]))
                         .foregroundColor(.white)
-                            
+                        
+                        // Show intersection Point
                         let intersectionPoint = CGPoint(x: touchLocation.x, y: proxy.position(forY: yValue)!)
                         Circle()
                             .fill(Color.white)
@@ -150,11 +183,13 @@ struct DetailedDataView: View {
         let location = gesture.location
         touchLocation = location
         isTouching = true
+        chartYPosition = 28.5
     }
         
     private func handleDragGestureEnd(_ gesture: DragGesture.Value) {
         touchLocation = .zero
         isTouching = false
+        chartYPosition = -100.0
     }
     
     private func getClosestDataPoint(_ touchPosition: CGPoint, _ proxy: ChartProxy, in geometry: GeometryProxy, _ currentData: [DataPoint]) -> DataPoint? {
