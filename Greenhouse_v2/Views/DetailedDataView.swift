@@ -11,11 +11,14 @@ import Charts
 struct DetailedDataView: View {
     private var VariableData: WholeVariableData
     
+    @State private var touchLocation: CGPoint = .zero
+    @State private var isTouching: Bool = false
+    @State var currentTab: String = "1D"
+    
     init(inputData: WholeVariableData){
         VariableData = inputData
     }
     
-    @State var currentTab: String = "1D"
     var body: some View {
         VStack{
             Spacer()
@@ -35,6 +38,7 @@ struct DetailedDataView: View {
                 }
                 .pickerStyle(.segmented)
                 .padding()
+            Spacer()
             chartView(currentTab: currentTab)
             Spacer()
             
@@ -104,6 +108,63 @@ struct DetailedDataView: View {
         .chartYScale(domain: (min - 2)...(max + 2))
         .frame(width: 350)
         .frame(height: 300)
+        .chartOverlay{ proxy in
+            GeometryReader { geometry in
+                if isTouching {
+                    if let closestDataPoint = getClosestDataPoint(touchLocation, proxy, in: geometry, currentData) {
+                        let yValue = closestDataPoint.value
+                        let formattedYValue = String(format: "%.0f", yValue)
+                        Text(formattedYValue)
+                            .font(.title)
+                            .foregroundColor(.white)
+                            .position(x: touchLocation.x, y: -30)
+                        let plotViewHeight = geometry.size.height - 20 // Adjust the height as needed
+                        Path { path in
+                            path.move(to: CGPoint(x: touchLocation.x, y: 0))
+                            path.addLine(to: CGPoint(x: touchLocation.x, y: plotViewHeight))
+                        }
+                        .stroke(style: StrokeStyle(lineWidth: 1, dash: [5]))
+                        .foregroundColor(.white)
+                            
+                        let intersectionPoint = CGPoint(x: touchLocation.x, y: proxy.position(forY: yValue)!)
+                        Circle()
+                            .fill(Color.white)
+                            .frame(width: 16, height: 16)
+                            .position(intersectionPoint)
+                    }
+                }
+            }
+        }
+        .gesture(
+            DragGesture()
+                .onChanged { gesture in
+                    handleDragGesture(gesture)
+                }
+                .onEnded { gesture in
+                    handleDragGestureEnd(gesture)
+                }
+        )
+    }
+    
+    private func handleDragGesture(_ gesture: DragGesture.Value) {
+        let location = gesture.location
+        touchLocation = location
+        isTouching = true
+    }
+        
+    private func handleDragGestureEnd(_ gesture: DragGesture.Value) {
+        touchLocation = .zero
+        isTouching = false
+    }
+    
+    private func getClosestDataPoint(_ touchPosition: CGPoint, _ proxy: ChartProxy, in geometry: GeometryProxy, _ currentData: [DataPoint]) -> DataPoint? {
+        let xPosition = touchPosition.x - geometry[proxy.plotAreaFrame].origin.x
+        if let dateSelected: Date = proxy.value(atX: xPosition) {
+            let closestDataPoint = currentData.min(by: { abs($0.date.timeIntervalSince(dateSelected)) < abs($1.date.timeIntervalSince(dateSelected)) })
+            touchLocation.x = proxy.position(forX: closestDataPoint!.date)!
+            return closestDataPoint
+        }
+        return nil
     }
 }
 

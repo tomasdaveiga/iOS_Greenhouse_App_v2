@@ -7,7 +7,7 @@
 
 import Foundation
 
-var previewGreenhouseData: GreenhouseData = load("greenhouseDemo.json")
+var previewGreenhouseData: GreenhouseData = load("greenhouseDemo_v2.json")
 var previewTempData: WholeVariableData = processTempDataPreview(previewGreenhouseData)
 var previewHumidityData: WholeVariableData = processHumidityDataPreview(previewGreenhouseData)
 var previewLightData: WholeVariableData = processLightDataPreview(previewGreenhouseData)
