@@ -158,6 +158,10 @@ struct DetailedDataView: View {
     }
     
     private func getClosestDataPoint(_ touchPosition: CGPoint, _ proxy: ChartProxy, in geometry: GeometryProxy, _ currentData: [DataPoint]) -> DataPoint? {
+        guard !currentData.isEmpty else{
+            return nil
+        }
+        
         let xPosition = touchPosition.x - geometry[proxy.plotAreaFrame].origin.x
         if let dateSelected: Date = proxy.value(atX: xPosition) {
             let closestDataPoint = currentData.min(by: { abs($0.date.timeIntervalSince(dateSelected)) < abs($1.date.timeIntervalSince(dateSelected)) })
